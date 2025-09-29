@@ -782,6 +782,35 @@
             background-color: #f1f1f1;
             color: #000000;
         }
+
+
+.info-textkya {
+    position: relative;
+    top: -20px;
+    margin-top: 0;
+    margin-bottom: 0px;
+    font-size: 14px; /* 少し大きめ */
+    font-weight: 500; /* 少し太字 */
+    color: #333333; /* 真っ黒より目に優しい */
+    line-height: 1.8; /* 行間広め */
+    text-align: left; /* 左揃え */
+    word-wrap: break-word;
+    background-color: #f9f9f9; /* 明るめ背景で読みやすい */
+    padding: 8px 12px; /* 内側に余白を追加 */
+    border-radius: 0px; /* 角を少し丸く */
+    border: 1px solid #000000; /* 黒より柔らかいグレーの枠線 */
+    border-top: none;
+}
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+    .info-textkya {
+        font-size: 13px;
+        top: -20px;
+        line-height: 1.9;
+        padding: 10px; /* スマホは少し広めの余白 */
+    }
+}
     </style>
 </head>
 
@@ -873,6 +902,16 @@
         <textarea id="message" rows="4" placeholder="メッセージを入力してください"></textarea>
 
         <div class="labeltyuuou">ご予約内容</div>
+        <div class="info-textkya">キャンセルポリシーについて<br><br>
+【キャンセル・ご変更について】<br>
+ご予約の変更・キャンセルは、前日までにご連絡をお願いいたします。<br>
+当日キャンセル・無断キャンセルは、下記のキャンセル料を申し受けます。<br><br>
+
+ • 当日キャンセル：施術料金の50％<br>
+ • 無断キャンセル：施術料金の100％<br><br>
+
+また、15分以上の遅刻は施術時間の短縮またはキャンセル扱いとなる場合がございます。<br>
+お客様一人ひとりのお時間を大切にしておりますため、何卒ご理解・ご協力をお願いいたします。</div>
         <div id="displayInfo"></div> <!-- ここに選択された情報を表示します -->
 
         <button class="submit-button" onclick="submitForm()" div id="section-message">予約を行う</button>
