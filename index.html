@@ -849,10 +849,9 @@
         <div class="label" id="course">メニューをお選びください<span class="required">必須</span></div>
         <div class="info-text">※メニューを選択すると空き状況のカレンダーが表示されます</div>
         <div class="symptoms">
-            <button type="button" onclick="selectSymptom(this, 'treatment1')" data-price="15000">整肌コース</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment2')" data-price="15000">毛穴吸引コース</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment3')" data-price="15000">マッサージコース</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment4')" data-price="15000">肌質改善コース(3回コース)</button>
+            <button type="button" onclick="selectSymptom(this)" data-price="15000">小顔マッサージコース</button>
+            <button type="button" onclick="selectSymptom(this)" data-price="15000">毛穴掃除コース</button>
+            <button type="button" onclick="selectSymptom(this)" data-price="15000">整肌パックコース</button>
         </div>
 
         <div class="label">希望日時<span class="required">必須</span></div>
@@ -958,6 +957,9 @@
         let selectedirradiationsTime = 0; // 訪問回数で選択された時間
 
         let menuTimes = {
+            '小顔マッサージコース': 60,
+            '毛穴掃除コース': 60,
+            '整肌パックコース': 60,
             '整肌コース': 90,
             '毛穴吸引コース': 90,
             'マッサージコース': 90,
