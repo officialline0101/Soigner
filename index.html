@@ -822,34 +822,34 @@
             }
         }
 
-.info-textkyamenu {
-    position: relative;
-    top: -20px;
-    margin-top: 0;
-    margin-bottom: 0px;
-    font-size: 14px;
-    font-weight: 500;
-    color: #0c0c0c;
-    line-height: 1.8;
-    text-align: center; /* ← 中央揃え */
-    word-wrap: break-word;
-    background-color: #f9f9f9;
-    padding: 8px 12px;
-    border-radius: 0px;
-    border: 1px solid #000000;
-    border-top: none;
-}
+        .info-textkyamenu {
+            position: relative;
+            top: -20px;
+            margin-top: 0;
+            margin-bottom: 0px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #0c0c0c;
+            line-height: 1.8;
+            text-align: center;
+            /* ← 中央揃え */
+            word-wrap: break-word;
+            background-color: #f9f9f9;
+            padding: 8px 12px;
+            border-radius: 0px;
+            border: 1px solid #000000;
+            border-top: none;
+        }
 
-/* スマホ対応 */
-@media (max-width: 768px) {
-    .info-textkyamenu {
-        font-size: 13px;
-        top: -20px;
-        line-height: 1.9;
-        padding: 10px;
-    }
-}
-
+        /* スマホ対応 */
+        @media (max-width: 768px) {
+            .info-textkyamenu {
+                font-size: 13px;
+                top: -20px;
+                line-height: 1.9;
+                padding: 10px;
+            }
+        }
     </style>
 </head>
 
@@ -871,25 +871,25 @@
         <div class="label">電話番号<span class="required">必須</span></div>
         <input type="tel" id="phone" placeholder="電話番号を入力してください" oninput="saveInput('phone')">
 
-<div class="label">ご来店回数<span class="required">必須</span></div>
+        <div class="label">ご来店回数<span class="required">必須</span></div>
         <div class="visit-buttons">
             <button type="button" id="firstVisit" onclick="selectVisit(this)">1回目</button>
             <button type="button" id="repeatVisit" onclick="selectVisit(this)">2回目以降</button>
         </div>
 
-<div id="menuContainer" style="display: none;">
+        <div id="menuContainer" style="display: none;">
             <div class="label" id="course">メニューをお選びください<span class="required">必須</span></div>
             <div class="info-text">※メニューを選択すると空き状況のカレンダーが表示されます</div>
-            
+
             <div class="symptoms"></div>
-            
+
             <div id="treatment-text" style="display: none;"></div>
 
             <div class="label">【肌力底上げケア　オプション】</div>
-                    <div class="info-textkyamenu">各コースに＋13,200円</div>
+            <div class="info-textkyamenu" id="optionInfoText">各コースに＋13,200円</div>
             <div class="irradiations">
-                </div>
-            
+            </div>
+
             <div id="treatment-text" style="display: none;"></div>
         </div>
         <div class="label">希望日時<span class="required">必須</span></div>
@@ -1097,7 +1097,7 @@
             }
         }
 
-function updateDisplayInfo() {
+        function updateDisplayInfo() {
             const name = document.getElementById('name').value;
 
             const labelStyle = "color:#0c0c0c; font-size:14px; border:1px solid #0c0c0c; padding:0px 3px; border-radius:4px;";
@@ -1368,7 +1368,7 @@ function updateDisplayInfo() {
             updateDisplayInfo(); // 表示を更新
         }
 
-// 訪問回数を選択したときにメニューとオプションを書き換える関数
+        // 訪問回数を選択したときにメニューとオプションを書き換える関数
         function selectVisit(element) {
             // 選択された日時をリセット
             selectedFullDate = '';
@@ -1389,7 +1389,7 @@ function updateDisplayInfo() {
 
             // ----------- メニュー書き換え処理 -----------
             const symptomsContainer = document.querySelector('.symptoms');
-            
+
             // treatment-text が消えないように一旦避難
             const treatmentText = document.getElementById('treatment-text');
             if (treatmentText && symptomsContainer.contains(treatmentText)) {
@@ -1399,8 +1399,16 @@ function updateDisplayInfo() {
 
             let menuHtml = '';
 
-            // 1回目と2回目以降で表示するメニューのHTMLを作成
+            // ----------- ★修正箇所：オプションボタンとテキストの書き換え処理 -----------
+            const irradiationsContainer = document.querySelector('.irradiations');
+            const optionInfoText = document.getElementById('optionInfoText');
+
+            let optionHtml = '';
+            let optionPriceText = '';
+
+            // 1回目と2回目以降で表示するメニューとオプションのHTMLを作成
             if (element.id === 'firstVisit') {
+                // 1回目のメニュー
                 menuHtml = `
             <button type="button" onclick="selectSymptom(this, 'treatment1')" data-price="8000">【初回体験】整肌（パック）</button>
             
@@ -1410,43 +1418,54 @@ function updateDisplayInfo() {
             
             <button type="button" onclick="selectSymptom(this, 'treatment7')" data-price="12000">【初回体験】ほうれい線撃退</button>
         `;
+                // 1回目のオプション
+                optionPriceText = '各コースに＋4,400円';
+                optionHtml = `
+            <button type="button" id="celser" onclick="selectirradiations(this, 'treatment13')" data-price="4400">【初回】セルサー・イオン導入コース</button>
+        `;
+
             } else {
+                // 2回目以降のメニュー
                 menuHtml = `
             <button type="button" onclick="selectSymptom(this, 'treatment9')" data-price="30000">整肌（パック）コース(全3回)</button>
             <button type="button" onclick="selectSymptom(this, 'treatment10')" data-price="36000">毛穴スッキリコース(全3回)</button>
             <button type="button" onclick="selectSymptom(this, 'treatment11')" data-price="45000">シミ、リセットコース(全3回)</button>
             <button type="button" onclick="selectSymptom(this, 'treatment12')" data-price="45000">ほうれい線撃退コース(全3回)</button>
         `;
+                // 2回目以降のオプション
+                optionPriceText = '各コースに＋13,200円';
+                optionHtml = `
+            <button type="button" id="celser" onclick="selectirradiations(this, 'treatment13')" data-price="13200">セルサー・イオン導入コース</button>
+        `;
             }
 
             // メニューボタンを書き換え
-            symptomsContainer.innerHTML = menuHtml;
+            if (symptomsContainer) {
+                symptomsContainer.innerHTML = menuHtml;
+            }
 
-            // ----------- ★追加：オプションボタン書き換え処理 -----------
-            const irradiationsContainer = document.querySelector('.irradiations');
-            
-            // オプションボタンのHTML（価格は data-price で設定 ※ここでは仮に2200円としています）
-            let optionHtml = `
-                <button type="button" id="celser" onclick="selectirradiations(this, 'treatment13')" data-price="13200">セルサー・イオン導入コース</button>
-            `;
-            
             // オプションボタンを書き換え
             if (irradiationsContainer) {
                 irradiationsContainer.innerHTML = optionHtml;
+            }
+
+            // オプションの価格説明テキストを書き換え
+            if (optionInfoText) {
+                optionInfoText.textContent = optionPriceText;
             }
 
             // ----------- 選択状態のリセット -----------
             selectedSymptom = [];
             selectedMenuTime = 0;
             menuPrice = 0;
-            
+
             // オプションもリセット
             irradiationsCount = '';
             optionsPrice = 0;
             selectedirradiationsTime = 0;
-            
+
             // 説明文を非表示
-            if(treatmentText) treatmentText.style.display = 'none';
+            if (treatmentText) treatmentText.style.display = 'none';
 
             // カレンダーを非表示
             document.querySelector('.calendar-container').style.display = 'none';
@@ -1556,7 +1575,7 @@ function updateDisplayInfo() {
             updateDisplayInfo();
         }
 
-function submitForm() {
+        function submitForm() {
             const formData = {
                 name: document.getElementById('name').value.trim(),
                 phone: document.getElementById('phone').value.trim(),
@@ -1590,8 +1609,8 @@ function submitForm() {
             }
 
             // ★修正箇所：オプションがある場合のみカンマ付きで結合、なければメニューのみ
-            const menuText = formData.irradiationsCount 
-                ? `${formData.selectedSymptom},${formData.irradiationsCount}` 
+            const menuText = formData.irradiationsCount
+                ? `${formData.selectedSymptom},${formData.irradiationsCount}`
                 : formData.selectedSymptom;
 
             // LINEトークにメッセージを送信
