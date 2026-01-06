@@ -885,7 +885,7 @@
             
             <div id="treatment-text" style="display: none;"></div>
 
-            <div class="label">【ターンオーバー促進！お肌柔らかオプション】</div>
+            <div class="label">【肌力底上げケア　オプション】</div>
                     <div class="info-textkyamenu">各コースに＋15,000円</div>
             <div class="irradiations">
                 </div>
@@ -1304,7 +1304,7 @@ function updateDisplayInfo() {
                 treatmentText.innerHTML = `</div><div style="text-align: right;"><strong>3回：45,000円</strong></div>`;
             } else if (treatmentId === 'treatment13') {
                 selectedMenuTime = 90;
-                treatmentText.innerHTML = `</div><div style="text-align: right;"><strong>3回：45,000円</strong></div>`;
+                treatmentText.innerHTML = `</div><div style="text-align: right;"><strong>13,200円</strong></div>`;
             } else {
                 treatmentText.innerHTML = '';
                 treatmentText.style.display = 'none';
@@ -1427,7 +1427,7 @@ function updateDisplayInfo() {
             
             // オプションボタンのHTML（価格は data-price で設定 ※ここでは仮に2200円としています）
             let optionHtml = `
-                <button type="button" id="celser" onclick="selectirradiations(this, 'treatment13')" data-price="15000">セルサーコース</button>
+                <button type="button" id="celser" onclick="selectirradiations(this, 'treatment13')" data-price="15000">セルサー・イオン導入コース</button>
             `;
             
             // オプションボタンを書き換え
