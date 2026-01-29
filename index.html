@@ -1306,6 +1306,9 @@
             } else if (treatmentId === 'treatment13') {
                 selectedMenuTime = 90;
                 treatmentText.innerHTML = `</div><div style="text-align: right;"><strong>13,200円</strong></div>`;
+            } else if (treatmentId === 'treatment14') {
+                selectedMenuTime = 70;
+                treatmentText.innerHTML = `</div><div style="text-align: right;"><strong>7,000円（税込）</strong></div>`;
             } else {
                 treatmentText.innerHTML = '';
                 treatmentText.style.display = 'none';
@@ -1411,6 +1414,8 @@
             if (element.id === 'firstVisit') {
                 // 1回目のメニュー
                 menuHtml = `
+            <button type="button" onclick="selectSymptom(this, 'treatment14')" data-price="7000">【ご新規様】2月限定韓国水光肌体験</button>
+                
             <button type="button" onclick="selectSymptom(this, 'treatment1')" data-price="8000">【初回体験】整肌（パック）</button>
             
             <button type="button" onclick="selectSymptom(this, 'treatment3')" data-price="9600">【初回体験】毛穴スッキリ</button>
