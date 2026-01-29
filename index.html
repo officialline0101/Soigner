@@ -990,6 +990,7 @@
         let selectedirradiationsTime = 0; // 訪問回数で選択された時間
 
         let menuTimes = {
+            '【ご新規様】2月限定韓国水光肌体験': 70,
             '【初回体験】整肌（パック）': 90,
             '【初回体験】毛穴スッキリ': 90,
             '【初回体験】シミ、リセット': 90,
@@ -1410,6 +1411,8 @@
             if (element.id === 'firstVisit') {
                 // 1回目のメニュー
                 menuHtml = `
+            <button type="button" onclick="selectSymptom(this)" data-price="8000">【ご新規様】2月限定韓国水光肌体験</button>
+                
             <button type="button" onclick="selectSymptom(this, 'treatment1')" data-price="8000">【初回体験】整肌（パック）</button>
             
             <button type="button" onclick="selectSymptom(this, 'treatment3')" data-price="9600">【初回体験】毛穴スッキリ</button>
