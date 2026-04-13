@@ -1038,20 +1038,12 @@
         let selectedirradiationsTime = 0; // 訪問回数で選択された時間
 
         let menuTimes = {
-            '◆ゆらぎ肌を整える◆': 120,
-            '◆血流巡らせインナードライを艶肌へ◆': 120,
-            '◆シミを増やしたくない！紫外線が強くなる前のシミ予防◆': 120,
-            '♦︎ゆらぎ肌を整える♦': 90,
-            '♦︎血流巡らせインナードライを艶肌へ♦︎': 90,
-            '♦︎シミを増やしたくない！紫外線が強くなる前のシミ予防♦︎': 90,
-            '【初回体験】整肌（パック）': 90,
-            '【初回体験】毛穴スッキリ': 90,
-            '【初回体験】シミ、リセット': 90,
-            '【初回体験】ほうれい線撃退': 90,
-            '整肌（パック）コース(全3回)': 90,
-            '毛穴スッキリコース(全3回)': 90,
-            'シミ、リセットコース(全3回)': 90,
-            'ほうれい線撃退コース(全3回)': 90
+            '毛穴洗浄・美肌セットメニュー　60分': 120,
+            '紫外線対策・美白セットメニュー　60分': 120,
+            '保湿・艶肌セットメニュー　60分': 120,
+            'ベーシックコース予約': 120,
+            'リフトアップエイジングケアコース予約': 120,
+            'シミ・美白集中コース予約': 120
         };
 
         let selectedMenuTime = 0;
@@ -1320,72 +1312,45 @@
 
             // --- IDごとの表示内容（説明・料金・時間）を設定 ---
             // ※料金はボタンのdata-priceではなく、ここの定義が優先されます
-            if (treatmentId === 'treatment1') {
-                selectedMenuTime = 90;
-                treatmentText.innerHTML = `</div><div style="text-align: right;"><strong>初回料金：<span style="color: red;">8,000円</span></strong></div>`;
-            } else if (treatmentId === 'treatment2') {
-                selectedMenuTime = 90;
-                treatmentText.innerHTML = `</div><div style="text-align: right;"><strong>1回：10,000円</strong></div>`;
-            } else if (treatmentId === 'treatment3') {
-                selectedMenuTime = 90;
-                treatmentText.innerHTML = `</div><div style="text-align: right;"><strong>初回料金：<span style="color: red;">9,600円</span></strong></div>`;
-            } else if (treatmentId === 'treatment4') {
-                selectedMenuTime = 90;
-                treatmentText.innerHTML = `</div><div style="text-align: right;"><strong>1回：12,000円</strong></div>`;
-            } else if (treatmentId === 'treatment5') {
-                selectedMenuTime = 90;
-                treatmentText.innerHTML = `</div><div style="text-align: right;"><strong>初回料金：<span style="color: red;">12,000円</span></strong></div>`;
-            } else if (treatmentId === 'treatment6') {
-                selectedMenuTime = 90;
-                treatmentText.innerHTML = `</div><div style="text-align: right;"><strong>1回：15,000円</strong></div>`;
-            } else if (treatmentId === 'treatment7') {
-                selectedMenuTime = 90;
-                treatmentText.innerHTML = `</div><div style="text-align: right;"><strong>初回料金：<span style="color: red;">12,000円</span></strong></div>`;
-            } else if (treatmentId === 'treatment8') {
-                selectedMenuTime = 90;
-                treatmentText.innerHTML = `</div><div style="text-align: right;"><strong>1回：15,000円</strong></div>`;
-            } else if (treatmentId === 'treatment9') {
-                selectedMenuTime = 90;
-                treatmentText.innerHTML = `</div><div style="text-align: right;"><strong>3回：30,000円</strong></div>`;
-            } else if (treatmentId === 'treatment10') {
-                selectedMenuTime = 90;
-                treatmentText.innerHTML = `</div><div style="text-align: right;"><strong>3回：36,000円</strong></div>`;
-            } else if (treatmentId === 'treatment11') {
-                selectedMenuTime = 90;
-                treatmentText.innerHTML = `</div><div style="text-align: right;"><strong>3回：45,000円</strong></div>`;
-            } else if (treatmentId === 'treatment12') {
-                selectedMenuTime = 90;
-                treatmentText.innerHTML = `</div><div style="text-align: right;"><strong>3回：45,000円</strong></div>`;
-            } else if (treatmentId === 'treatment13') {
-                selectedMenuTime = 90;
-                treatmentText.innerHTML = `</div><div style="text-align: right;"><strong>13,200円</strong></div>`;
-            } else if (treatmentId === 'treatment14') {
-                selectedMenuTime = 70;
-                treatmentText.innerHTML = `</div><div style="text-align: right;"><strong>7,000円（税込）</strong></div>`;
-            } else if (treatmentId === 'treatment15') {
-                // 初回：ゆらぎ肌を整える（120分）
+            if (treatmentId === 'treatment_keana') {
+                // 初回：毛穴洗浄・美肌セットメニュー　60分（所要時間120分）
                 selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="font-size: 13.5px; margin-bottom: 8px; line-height: 1.5;">〜寒暖差で乾燥・赤み・ニキビのお悩みバリア機能を高めて整える〜</div><div style="text-align: right;"><strong>料金：<span style="color: red;">8,200円（税込）</span></strong></div>`;
-            } else if (treatmentId === 'treatment16') {
-                // 初回：血流巡らせインナードライを艶肌へ（120分）
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">8,900円（税込）</span></strong></div>`;
+            } else if (treatmentId === 'treatment_uv') {
+                // 初回：紫外線対策・美白セットメニュー　60分（所要時間120分）
                 selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="font-size: 13.5px; margin-bottom: 8px; line-height: 1.5;">〜冷えたお肌を中から巡らせ活性化〜</div><div style="text-align: right;"><strong>料金：<span style="color: red;">12,600円（税込）</span></strong></div>`;
-            } else if (treatmentId === 'treatment17') {
-                // 初回：シミ予防（120分）
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">16,800円（税込）</span></strong></div>`;
+            } else if (treatmentId === 'treatment_hoshitsu') {
+                // 初回：保湿・艶肌セットメニュー　60分（所要時間120分）
                 selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="font-size: 13.5px; margin-bottom: 8px; line-height: 1.5;">〜紫外線対策はなんといってもビタミンC 同時に美白も叶えます〜</div><div style="text-align: right;"><strong>料金：<span style="color: red;">19,400円（税込）</span></strong></div>`;
-            } else if (treatmentId === 'treatment18') {
-                // 2回目以降：ゆらぎ肌を整える（90分）
-                selectedMenuTime = 90;
-                treatmentText.innerHTML = `<div style="font-size: 13.5px; margin-bottom: 8px; line-height: 1.5;">〜寒暖差で乾燥・赤み・ニキビのお悩みバリア機能を高めて整える〜</div><div style="text-align: right;"><strong>料金：8,200円（税込）</strong></div>`;
-            } else if (treatmentId === 'treatment19') {
-                // 2回目以降：血流巡らせインナードライを艶肌へ（90分）
-                selectedMenuTime = 90;
-                treatmentText.innerHTML = `<div style="font-size: 13.5px; margin-bottom: 8px; line-height: 1.5;">〜冷えたお肌を中から巡らせ活性化〜</div><div style="text-align: right;"><strong>料金：12,600円（税込）</strong></div>`;
-            } else if (treatmentId === 'treatment20') {
-                // 2回目以降：シミ予防（90分）
-                selectedMenuTime = 90;
-                treatmentText.innerHTML = `<div style="font-size: 13.5px; margin-bottom: 8px; line-height: 1.5;">〜紫外線対策はなんといってもビタミンC 同時に美白も叶えます〜</div><div style="text-align: right;"><strong>料金：19,400円（税込）</strong></div>`;
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">13,600円（税込）</span></strong></div>`;
+            } else if (treatmentId === 'treatment_basic') {
+                // 2回目以降：ベーシックコース予約（所要時間120分）
+                selectedMenuTime = 120;
+                treatmentText.innerHTML = '';
+                treatmentText.style.display = 'none';
+            } else if (treatmentId === 'treatment_liftup') {
+                // 2回目以降：リフトアップエイジングケアコース予約（所要時間120分）
+                selectedMenuTime = 120;
+                treatmentText.innerHTML = '';
+                treatmentText.style.display = 'none';
+            } else if (treatmentId === 'treatment_shimi') {
+                // 2回目以降：シミ・美白集中コース予約（所要時間120分）
+                selectedMenuTime = 120;
+                treatmentText.innerHTML = '';
+                treatmentText.style.display = 'none';
+            } else if (treatmentId === 'treatment_keana_r') {
+                // 2回目以降：毛穴洗浄・美肌セットメニュー　60分（所要時間120分）
+                selectedMenuTime = 120;
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：8,900円（税込）</strong></div>`;
+            } else if (treatmentId === 'treatment_uv_r') {
+                // 2回目以降：紫外線対策・美白セットメニュー　60分（所要時間120分）
+                selectedMenuTime = 120;
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：16,800円（税込）</strong></div>`;
+            } else if (treatmentId === 'treatment_hoshitsu_r') {
+                // 2回目以降：保湿・艶肌セットメニュー　60分（所要時間120分）
+                selectedMenuTime = 120;
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：13,600円（税込）</strong></div>`;
             } else {
                 treatmentText.innerHTML = '';
                 treatmentText.style.display = 'none';
@@ -1490,15 +1455,13 @@
 
             // 1回目と2回目以降で表示するメニューとオプションのHTMLを作成
             if (element.id === 'firstVisit') {
-                // 1回目のメニュー
+                // 初回のメニュー
                 menuHtml = `
-            <button type="button" onclick="selectSymptom(this, 'treatment15')" data-price="8200">◆ゆらぎ肌を整える◆</button>
-            
-            <button type="button" onclick="selectSymptom(this, 'treatment16')" data-price="12600">◆血流巡らせインナードライを艶肌へ◆</button>
-            
-            <button type="button" onclick="selectSymptom(this, 'treatment17')" data-price="19400">◆シミを増やしたくない！紫外線が強くなる前のシミ予防◆</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_keana')" data-price="8900">毛穴洗浄・美肌セットメニュー　60分</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_uv')" data-price="16800">紫外線対策・美白セットメニュー　60分</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_hoshitsu')" data-price="13600">保湿・艶肌セットメニュー　60分</button>
         `;
-                // 1回目のオプション
+                // 初回はオプション非表示
                 optionPriceText = '';
                 optionHtml = '';
                 
@@ -1507,26 +1470,22 @@
                 if (irradiationsContainer) irradiationsContainer.style.display = 'none';
 
             } else {
-                // 2回目以降のメニュー（都度払いメインに変更）
+                // 2回目以降のメニュー
                 menuHtml = `
-            <button type="button" onclick="selectSymptom(this, 'treatment2')" data-price="10000">整肌（パック）（都度払い）</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment4')" data-price="12000">毛穴スッキリ（都度払い）</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment6')" data-price="15000">シミ、リセット（都度払い）</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment8')" data-price="15000">ほうれい線撃退（都度払い）</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment18')" data-price="8200">♦︎ゆらぎ肌を整える♦︎</button>
-            
-            <button type="button" onclick="selectSymptom(this, 'treatment19')" data-price="12600">♦︎血流巡らせインナードライを艶肌へ♦︎</button>
-            
-            <button type="button" onclick="selectSymptom(this, 'treatment20')" data-price="19400">♦︎シミを増やしたくない！紫外線が強くなる前のシミ予防♦︎</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_basic')" data-price="0">ベーシックコース予約</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_liftup')" data-price="0">リフトアップエイジングケアコース予約</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_shimi')" data-price="0">シミ・美白集中コース予約</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_keana_r')" data-price="8900">毛穴洗浄・美肌セットメニュー　60分</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_uv_r')" data-price="16800">紫外線対策・美白セットメニュー　60分</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_hoshitsu_r')" data-price="13600">保湿・艶肌セットメニュー　60分</button>
         `;
-                // 2回目以降のオプション
-                optionPriceText = '各コースに＋4,400円';
-                optionHtml = `
-            <button type="button" id="celser" onclick="selectirradiations(this, 'treatment13')" data-price="4400">【2回目以降】セルサー・イオン導入コース</button>
-        `;
-                if (optionLabel) optionLabel.style.display = 'block';
-                if (optionInfoText) optionInfoText.style.display = 'block';
-                if (irradiationsContainer) irradiationsContainer.style.display = 'flex';
+                // 2回目以降もオプション非表示
+                optionPriceText = '';
+                optionHtml = '';
+                
+                if (optionLabel) optionLabel.style.display = 'none';
+                if (optionInfoText) optionInfoText.style.display = 'none';
+                if (irradiationsContainer) irradiationsContainer.style.display = 'none';
             }
 
             // メニューボタンを書き換え
@@ -1771,10 +1730,7 @@
             const table = calendar.querySelector('table tbody');
 
             const times = [
-                '10:00', '10:30', '11:00', '11:30',
-                '12:00', '12:30', '13:00', '13:30',
-                '14:00', '14:30', '15:00', '15:30',
-                '16:00'
+                '10:00', '12:00', '14:00', '16:00'
             ];
 
             if (table.rows.length === 0) {
