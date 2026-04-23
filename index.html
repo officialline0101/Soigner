@@ -1039,14 +1039,14 @@
 
         let menuTimes = {
             // 初回メニュー
-            '毛穴の汚れ除つるん肌メニュー　60分': 120,
+            '毛穴の汚れを落としてつるん肌　60分': 120,
             '夏の紫外線に勝つケアメニュー　60分': 120,
             '中から潤う艶肌仕上げメニュー　60分': 120,
             // 2回目以降メニュー
             'シミを薄く、透明美白コース予約': 120,
             '極上エイジングコース予約': 120,
             '乾燥を改善、ハリと輝きコース予約': 120,
-            '毛穴の汚れ除つるん肌メニュー　60分（2回目以降）': 120,
+            '毛穴の汚れを落としてつるん肌　60分（2回目以降）': 120,
             '夏の紫外線に勝つケアメニュー　60分（2回目以降）': 120,
             '中から潤う艶肌仕上げメニュー　60分（2回目以降）': 120
         };
@@ -1318,7 +1318,7 @@
             // --- IDごとの表示内容（説明・料金・時間）を設定 ---
             // ※料金はボタンのdata-priceではなく、ここの定義が優先されます
             if (treatmentId === 'treatment_keana') {
-                // 初回①：毛穴の汚れ除つるん肌メニュー　60分（所要時間120分）
+                // 初回①：毛穴の汚れを落としてつるん肌　60分（所要時間120分）
                 selectedMenuTime = 120;
                 treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">9,800円（税込）</span></strong></div>`;
             } else if (treatmentId === 'treatment_uv') {
@@ -1345,7 +1345,7 @@
                 treatmentText.innerHTML = '';
                 treatmentText.style.display = 'none';
             } else if (treatmentId === 'treatment_keana_r') {
-                // 2回目以降④：毛穴の汚れ除つるん肌メニュー　60分（所要時間120分）
+                // 2回目以降④：毛穴の汚れを落としてつるん肌　60分（所要時間120分）
                 selectedMenuTime = 120;
                 treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：9,800円（税込）</strong></div>`;
             } else if (treatmentId === 'treatment_uv_r') {
