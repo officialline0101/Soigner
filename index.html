@@ -1040,14 +1040,14 @@
         let menuTimes = {
             // 初回メニュー
             '毛穴汚れを落としてつるん肌　60分': 120,
-            '夏の紫外線に勝つ　60分': 120,
+            '紫外線に勝つ　60分': 120,
             '中から潤う艶肌仕上げ　60分': 120,
             // 2回目以降メニュー
             'シミを薄く！作らせない美白肌へ': 120,
             'すっきり小顔リラックス極上ケア': 120,
             '一から肌質改善（全3回）': 120,
             '毛穴汚れを落としてつるん肌　60分（2回目以降）': 120,
-            '夏の紫外線に勝つ　60分（2回目以降）': 120,
+            '紫外線に勝つ　60分（2回目以降）': 120,
             '中から潤う艶肌仕上げ　60分（2回目以降）': 120
         };
 
@@ -1322,13 +1322,13 @@
                 selectedMenuTime = 120;
                 treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">9,800円（税込）</span></strong></div>`;
             } else if (treatmentId === 'treatment_uv') {
-                // 初回②：夏の紫外線に勝つ　60分（所要時間120分）
+                // 初回②：紫外線に勝つ　60分（所要時間120分）
                 selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">16,300円（税込）</span></strong></div>`;
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">18,700円（税込）</span></strong></div>`;
             } else if (treatmentId === 'treatment_hoshitsu') {
                 // 初回③：中から潤う艶肌仕上げ　60分（所要時間120分）
                 selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">12,400円（税込）</span></strong></div>`;
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">14,600円（税込）</span></strong></div>`;
             } else if (treatmentId === 'treatment_shimi_r') {
                 // 2回目以降①：シミを薄く！作らせない美白肌へ（所要時間120分）
                 selectedMenuTime = 120;
@@ -1349,13 +1349,13 @@
                 selectedMenuTime = 120;
                 treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：9,800円（税込）</strong></div>`;
             } else if (treatmentId === 'treatment_uv_r') {
-                // 2回目以降⑤：夏の紫外線に勝つ　60分（所要時間120分）
+                // 2回目以降⑤：紫外線に勝つ　60分（所要時間120分）
                 selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：16,300円（税込）</strong></div>`;
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：18,700円（税込）</strong></div>`;
             } else if (treatmentId === 'treatment_hoshitsu_r') {
                 // 2回目以降⑥：中から潤う艶肌仕上げ　60分（所要時間120分）
                 selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：12,400円（税込）</strong></div>`;
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：14,600円（税込）</strong></div>`;
             } else {
                 treatmentText.innerHTML = '';
                 treatmentText.style.display = 'none';
@@ -1463,8 +1463,8 @@
                 // 初回のメニュー
                 menuHtml = `
             <button type="button" onclick="selectSymptom(this, 'treatment_keana')" data-price="9800">毛穴汚れを落としてつるん肌　60分</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment_uv')" data-price="16300">夏の紫外線に勝つ　60分</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment_hoshitsu')" data-price="12400">中から潤う艶肌仕上げ　60分</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_uv')" data-price="18700">紫外線に勝つ　60分</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_hoshitsu')" data-price="14600">中から潤う艶肌仕上げ　60分</button>
         `;
                 // 初回はオプション非表示
                 optionPriceText = '';
@@ -1481,8 +1481,8 @@
             <button type="button" onclick="selectSymptom(this, 'treatment_aging_r')" data-price="0">すっきり小顔リラックス極上ケア</button>
             <button type="button" onclick="selectSymptom(this, 'treatment_kanso_r')" data-price="0">一から肌質改善（全3回）</button>
             <button type="button" onclick="selectSymptom(this, 'treatment_keana_r')" data-price="9800">毛穴汚れを落としてつるん肌　60分</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment_uv_r')" data-price="16300">夏の紫外線に勝つ　60分</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment_hoshitsu_r')" data-price="12400">中から潤う艶肌仕上げ　60分</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_uv_r')" data-price="18700">紫外線に勝つ　60分</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_hoshitsu_r')" data-price="14600">中から潤う艶肌仕上げ　60分</button>
         `;
                 // 2回目以降もオプション非表示
                 optionPriceText = '';
