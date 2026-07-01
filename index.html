@@ -1046,6 +1046,9 @@
             'シミを薄く！作らせない美白肌へ': 120,
             'すっきり小顔リラックス極上ケア': 120,
             '一から肌質改善（全3回）': 120,
+            '毛穴専門ケア（種類別）': 120,
+            '乾燥肌に完全保湿ケア': 120,
+            'シワ改善プログラム': 120,
             '毛穴汚れを落としてつるん肌　60分（2回目以降）': 120,
             '紫外線に勝つ　60分（2回目以降）': 120,
             '中から潤う艶肌仕上げ　60分（2回目以降）': 120
@@ -1344,6 +1347,21 @@
                 selectedMenuTime = 120;
                 treatmentText.innerHTML = '';
                 treatmentText.style.display = 'none';
+            } else if (treatmentId === 'treatment_keana_senmon_r') {
+                // 2回目以降：毛穴専門ケア（種類別）（所要時間120分）
+                selectedMenuTime = 120;
+                treatmentText.innerHTML = '';
+                treatmentText.style.display = 'none';
+            } else if (treatmentId === 'treatment_kanso_kanzen_r') {
+                // 2回目以降：乾燥肌に完全保湿ケア（所要時間120分）
+                selectedMenuTime = 120;
+                treatmentText.innerHTML = '';
+                treatmentText.style.display = 'none';
+            } else if (treatmentId === 'treatment_shiwa_r') {
+                // 2回目以降：シワ改善プログラム（所要時間120分）
+                selectedMenuTime = 120;
+                treatmentText.innerHTML = '';
+                treatmentText.style.display = 'none';
             } else if (treatmentId === 'treatment_keana_r') {
                 // 2回目以降④：毛穴汚れを落としてつるん肌　60分（所要時間120分）
                 selectedMenuTime = 120;
@@ -1480,6 +1498,9 @@
             <button type="button" onclick="selectSymptom(this, 'treatment_shimi_r')" data-price="0">シミを薄く！作らせない美白肌へ</button>
             <button type="button" onclick="selectSymptom(this, 'treatment_aging_r')" data-price="0">すっきり小顔リラックス極上ケア</button>
             <button type="button" onclick="selectSymptom(this, 'treatment_kanso_r')" data-price="0">一から肌質改善（全3回）</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_keana_senmon_r')" data-price="0">毛穴専門ケア（種類別）</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_kanso_kanzen_r')" data-price="0">乾燥肌に完全保湿ケア</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_shiwa_r')" data-price="0">シワ改善プログラム</button>
             <button type="button" onclick="selectSymptom(this, 'treatment_keana_r')" data-price="9800">毛穴汚れを落としてつるん肌　60分</button>
             <button type="button" onclick="selectSymptom(this, 'treatment_uv_r')" data-price="18700">紫外線に勝つ　60分</button>
             <button type="button" onclick="selectSymptom(this, 'treatment_hoshitsu_r')" data-price="14600">中から潤う艶肌仕上げ　60分</button>
