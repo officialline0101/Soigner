@@ -233,6 +233,7 @@
 
         /* ===== 来店回数ボタン ===== */
         .visit-buttons,
+        .gender-buttons,
         .menu-sections,
         .irradiations {
             display: flex;
@@ -242,6 +243,7 @@
         }
 
         .visit-buttons button,
+        .gender-buttons button,
         .menu-sections button,
         .irradiations button {
             flex: 1;
@@ -257,6 +259,7 @@
         }
 
         .visit-buttons button.active,
+        .gender-buttons button.active,
         .menu-sections button.active,
         .irradiations button.active {
             background: linear-gradient(135deg, rgba(139, 115, 85, 0.06), rgba(196, 168, 130, 0.12));
@@ -919,6 +922,12 @@
         <div class="label">電話番号<span class="required">必須</span></div>
         <input type="tel" id="phone" placeholder="電話番号を入力してください" oninput="saveInput('phone')">
 
+        <div class="label">性別を教えてください<span class="required">必須</span></div>
+        <div class="gender-buttons">
+            <button type="button" id="femaleGender" onclick="selectGender(this)">女性</button>
+            <button type="button" id="maleGender" onclick="selectGender(this)">男性</button>
+        </div>
+
         <div class="label">ご来店回数<span class="required">必須</span></div>
         <div class="visit-buttons">
             <button type="button" id="firstVisit" onclick="selectVisit(this)">初回</button>
@@ -1001,6 +1010,7 @@
     <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
     <script>
         let visitCount = '';
+        let gender = '';
         let selectedMenu = '';
         let selectedSymptom = [];  // 配列として定義
         let selectedFullDate = '';
@@ -1066,9 +1076,17 @@
         document.addEventListener('DOMContentLoaded', function () {
             const savedName = localStorage.getItem('name');
             const savedPhone = localStorage.getItem('phone');
+            const savedGender = localStorage.getItem('gender');
 
             if (savedName) document.getElementById('name').value = savedName;
             if (savedPhone) document.getElementById('phone').value = savedPhone;
+
+            // 前回選択された性別を復元
+            if (savedGender === '女性') {
+                selectGender(document.getElementById('femaleGender'));
+            } else if (savedGender === '男性') {
+                selectGender(document.getElementById('maleGender'));
+            }
         });
 
         // スムーズスクロール
@@ -1156,6 +1174,10 @@
 
             const labelStyle = "color:#0c0c0c; font-size:14px; border:1px solid #0c0c0c; padding:0px 3px; border-radius:4px;";
 
+            const genderText = gender
+                ? `<span style="${labelStyle}"><strong>性別</strong></span> ${gender}`
+                : '・性別が未選択です';
+
             const visitCountText = visitCount
                 ? `<span style="${labelStyle}"><strong>来店回数</strong></span> ${visitCount}`
                 : '・来店回数が未選択です';
@@ -1189,6 +1211,11 @@
         <div class="info-row">
             <p><span style="${labelStyle}"><strong>お名前</strong></span> ${name}</p>
             <button class="edit-button" onclick="scrollToElement('name')">修正</button>
+        </div>
+        <hr>
+        <div class="info-row">
+            <p>${genderText}</p>
+            <button class="edit-button" onclick="scrollToElement('femaleGender')">修正</button>
         </div>
         <hr>
         <div class="info-row">
@@ -1230,6 +1257,9 @@
         // 各ボタンや入力フィールドでupdateDisplayInfoを呼び出すようにする
         document.getElementById('name').addEventListener('input', updateDisplayInfo);
         document.querySelectorAll('.visit-buttons button').forEach(button => {
+            button.addEventListener('click', updateDisplayInfo);
+        });
+        document.querySelectorAll('.gender-buttons button').forEach(button => {
             button.addEventListener('click', updateDisplayInfo);
         });
         document.querySelectorAll('.menu-sections button').forEach(button => {
@@ -1432,6 +1462,20 @@
         }
 
         // 訪問回数を選択したときにメニューとオプションを書き換える関数
+        // 性別の選択
+        function selectGender(element) {
+            // 既存の選択状態を解除
+            document.getElementById('femaleGender').classList.remove('active');
+            document.getElementById('maleGender').classList.remove('active');
+            element.classList.add('active');
+            gender = element.innerText;
+
+            // 選択内容を保存
+            localStorage.setItem('gender', gender);
+
+            updateDisplayInfo();
+        }
+
         function selectVisit(element) {
             // 選択された日時をリセット
             selectedFullDate = '';
@@ -1648,6 +1692,7 @@
             const formData = {
                 name: document.getElementById('name').value.trim(),
                 phone: document.getElementById('phone').value.trim(),
+                gender: gender,
                 visitCount: visitCount,
                 selectedMenu: selectedMenu,
                 selectedSymptom: selectedSymptom && selectedSymptom.length > 0 ? selectedSymptom : null, // 空の選択肢をチェック
@@ -1664,6 +1709,11 @@
 
             if (!formData.phone) {
                 alert('電話番号を入力してください。');
+                return;
+            }
+
+            if (!formData.gender) {
+                alert('性別を選択してください。');
                 return;
             }
 
@@ -1685,7 +1735,7 @@
             // LINEトークにメッセージを送信
             liff.sendMessages([{
                 type: 'text',
-                text: `【予約フォーム】\nお名前：${formData.name}\n電話番号：${formData.phone}\nご来店回数：${formData.visitCount}\nメニュー：${menuText}\n希望日時：\n ${formData.dates[0]}\nメッセージ：${formData.message}`
+                text: `【予約フォーム】\nお名前：${formData.name}\n電話番号：${formData.phone}\n性別：${formData.gender}\nご来店回数：${formData.visitCount}\nメニュー：${menuText}\n希望日時：\n ${formData.dates[0]}\nメッセージ：${formData.message}`
             }]).then(() => {
                 /* メッセージ送信成功時の処理 */
                 alert('当日キャンセルは無いようにお願いいたします。');
@@ -1867,6 +1917,10 @@
                         return slotStart < event.end && event.start < slotEnd;
                     });
 
+                    // 1つの時間帯に受け付ける予約数の上限（2件入ると✕になる）
+                    // ※Googleカレンダーに手動で予定を1件入れると、その分1枠が埋まります
+                    const CAPACITY = 2;
+
                     const count = availability.reduce((acc, slot) => {
                         const eventStart = new Date(slot.startTime);
                         const eventEnd = new Date(slot.endTime);
@@ -1877,8 +1931,8 @@
                         return acc;
                     }, 0);
 
-                    // 営業日のイベント時間内に他のイベントがある場合
-                    if (isBusinessEventTime && count > 0) {
+                    // 営業日のイベント時間内に他のイベントが上限数ある場合
+                    if (isBusinessEventTime && count >= CAPACITY) {
                         cell.textContent = '✕';
                         cell.classList.add('unavailable');
                     }
@@ -1902,13 +1956,13 @@
                         cell.textContent = '✕';
                         cell.classList.add('unavailable');
                     }
-                    // 営業日でかつ他のイベントがない場合
-                    else if (isBusinessDay && count === 0) {
+                    // 営業日でかつ他のイベントが上限未満の場合
+                    else if (isBusinessDay && count < CAPACITY) {
                         cell.textContent = '◯';
                         cell.classList.add('available');
                     }
                     // それ以外の条件
-                    else if (count <= 0) {
+                    else if (count < CAPACITY) {
                         cell.textContent = '◯';
                         cell.classList.add('available');
                     } else {
