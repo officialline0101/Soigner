@@ -989,7 +989,7 @@
             </div>
         </div>
 
-        <div class="labeltyuuou">メッセージ<br>（質問等お気軽にご記入ください）</div>
+        <div class="labeltyuuou">メッセージ<br>（現在のお悩み・質問等お気軽にご記入ください）</div>
         <textarea id="message" rows="4" placeholder="メッセージを入力してください"></textarea>
 
         <div class="labeltyuuou">ご予約内容</div>
@@ -1048,20 +1048,14 @@
         let selectedirradiationsTime = 0; // 訪問回数で選択された時間
 
         let menuTimes = {
-            // 初回メニュー
-            '毛穴汚れを落としてつるん肌　60分': 120,
-            '紫外線に勝つ　60分': 120,
-            '中から潤う艶肌仕上げ　60分': 120,
+            // 新規メニュー
+            '毛穴の目立ちにくい肌へ': 120,
+            'シミ予防ケア': 120,
+            'シワ、リフトケア': 120,
             // 2回目以降メニュー
-            'シミを薄く！作らせない美白肌へ': 120,
-            'すっきり小顔リラックス極上ケア': 120,
-            '一から肌質改善（全3回）': 120,
-            '毛穴専門ケア（種類別）': 120,
-            '乾燥肌に完全保湿ケア': 120,
-            'シワ改善プログラム': 120,
-            '毛穴汚れを落としてつるん肌　60分（2回目以降）': 120,
-            '紫外線に勝つ　60分（2回目以降）': 120,
-            '中から潤う艶肌仕上げ　60分（2回目以降）': 120
+            '痛くない！シミ・肝斑除去＆美白': 120,
+            'ほうれい線・おでこのシワ改善': 120,
+            '肌理が整う肌質改善3回コース': 120
         };
 
         let selectedMenuTime = 0;
@@ -1350,54 +1344,42 @@
 
             // --- IDごとの表示内容（説明・料金・時間）を設定 ---
             // ※料金はボタンのdata-priceではなく、ここの定義が優先されます
-            if (treatmentId === 'treatment_keana') {
-                // 初回①：毛穴汚れを落としてつるん肌　60分（所要時間120分）
+            if (treatmentId === 'treatment_keana_new') {
+                // 新規①：毛穴の目立ちにくい肌へ（所要時間120分）
                 selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">9,800円（税込）</span></strong></div>`;
-            } else if (treatmentId === 'treatment_uv') {
-                // 初回②：紫外線に勝つ　60分（所要時間120分）
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">10,800円（税込）</span></strong></div>`;
+            } else if (treatmentId === 'treatment_shimi_yobo') {
+                // 新規②：シミ予防ケア（所要時間120分）
                 selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">18,700円（税込）</span></strong></div>`;
-            } else if (treatmentId === 'treatment_hoshitsu') {
-                // 初回③：中から潤う艶肌仕上げ　60分（所要時間120分）
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">13,600円（税込）</span></strong></div>`;
+            } else if (treatmentId === 'treatment_shiwa_lift') {
+                // 新規③：シワ、リフトケア（所要時間120分）
                 selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">14,600円（税込）</span></strong></div>`;
-            } else if (treatmentId === 'treatment_shimi_r') {
-                // 2回目以降①：シミを薄く！作らせない美白肌へ（所要時間120分）
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">14,200円（税込）</span></strong></div>`;
+            } else if (treatmentId === 'treatment_kanpan_r') {
+                // 2回目以降①：痛くない！シミ・肝斑除去＆美白（所要時間120分）
                 selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">1回 16,400円／3回 49,200円（税込）</span></strong></div>`;
-            } else if (treatmentId === 'treatment_aging_r') {
-                // 2回目以降②：すっきり小顔リラックス極上ケア（所要時間120分）
-                selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">32,000円（税込）</span></strong></div>`;
-            } else if (treatmentId === 'treatment_kanso_r') {
-                // 2回目以降③：一から肌質改善（全3回）（所要時間120分）
-                selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">3回 43,200円（税込）※ホームケア別途</span></strong></div>`;
-            } else if (treatmentId === 'treatment_keana_senmon_r') {
-                // 2回目以降：毛穴専門ケア（種類別）（所要時間120分）
-                selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">1回 13,800円／3回 41,400円（税込）</span></strong></div>`;
-            } else if (treatmentId === 'treatment_kanso_kanzen_r') {
-                // 2回目以降：乾燥肌に完全保湿ケア（所要時間120分）
-                selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">1回 14,500円／3回 43,500円（税込）</span></strong></div>`;
-            } else if (treatmentId === 'treatment_shiwa_r') {
-                // 2回目以降：シワ改善プログラム（所要時間120分）
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">1回 14,800円／3回 44,400円（税込）</span></strong></div>`;
+            } else if (treatmentId === 'treatment_houreisen_r') {
+                // 2回目以降②：ほうれい線・おでこのシワ改善（所要時間120分）
                 selectedMenuTime = 120;
                 treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">1回 15,400円／3回 46,200円（税込）</span></strong></div>`;
-            } else if (treatmentId === 'treatment_keana_r') {
-                // 2回目以降④：毛穴汚れを落としてつるん肌　60分（所要時間120分）
+            } else if (treatmentId === 'treatment_kime_r') {
+                // 2回目以降③：肌理が整う肌質改善3回コース（所要時間120分）
                 selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：9,800円（税込）</strong></div>`;
-            } else if (treatmentId === 'treatment_uv_r') {
-                // 2回目以降⑤：紫外線に勝つ　60分（所要時間120分）
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">3回 43,200円（税込）</span></strong></div>`;
+            } else if (treatmentId === 'treatment_keana_new_r') {
+                // 2回目以降④：毛穴の目立ちにくい肌へ（所要時間120分）
                 selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：18,700円（税込）</strong></div>`;
-            } else if (treatmentId === 'treatment_hoshitsu_r') {
-                // 2回目以降⑥：中から潤う艶肌仕上げ　60分（所要時間120分）
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">10,800円（税込）</span></strong></div>`;
+            } else if (treatmentId === 'treatment_shimi_yobo_r') {
+                // 2回目以降⑤：シミ予防ケア（所要時間120分）
                 selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：14,600円（税込）</strong></div>`;
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">13,600円（税込）</span></strong></div>`;
+            } else if (treatmentId === 'treatment_shiwa_lift_r') {
+                // 2回目以降⑥：シワ、リフトケア（所要時間120分）
+                selectedMenuTime = 120;
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">14,200円（税込）</span></strong></div>`;
             } else {
                 treatmentText.innerHTML = '';
                 treatmentText.style.display = 'none';
@@ -1518,9 +1500,9 @@
             if (element.id === 'firstVisit') {
                 // 初回のメニュー
                 menuHtml = `
-            <button type="button" onclick="selectSymptom(this, 'treatment_keana')" data-price="9800">毛穴汚れを落としてつるん肌　60分</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment_uv')" data-price="18700">紫外線に勝つ　60分</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment_hoshitsu')" data-price="14600">中から潤う艶肌仕上げ　60分</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_keana_new')" data-price="10800">毛穴の目立ちにくい肌へ</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_shimi_yobo')" data-price="13600">シミ予防ケア</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_shiwa_lift')" data-price="14200">シワ、リフトケア</button>
         `;
                 // 初回はオプション非表示
                 optionPriceText = '';
@@ -1533,15 +1515,12 @@
             } else {
                 // 2回目以降のメニュー
                 menuHtml = `
-            <button type="button" onclick="selectSymptom(this, 'treatment_shimi_r')" data-price="16400">シミを薄く！作らせない美白肌へ</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment_aging_r')" data-price="32000">すっきり小顔リラックス極上ケア</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment_kanso_r')" data-price="43200">一から肌質改善（全3回）</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment_keana_senmon_r')" data-price="13800">毛穴専門ケア（種類別）</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment_kanso_kanzen_r')" data-price="14500">乾燥肌に完全保湿ケア</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment_shiwa_r')" data-price="15400">シワ改善プログラム</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment_keana_r')" data-price="9800">毛穴汚れを落としてつるん肌　60分</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment_uv_r')" data-price="18700">紫外線に勝つ　60分</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment_hoshitsu_r')" data-price="14600">中から潤う艶肌仕上げ　60分</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_kanpan_r')" data-price="14800">痛くない！シミ・肝斑除去＆美白</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_houreisen_r')" data-price="15400">ほうれい線・おでこのシワ改善</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_kime_r')" data-price="43200">肌理が整う肌質改善3回コース</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_keana_new_r')" data-price="10800">毛穴の目立ちにくい肌へ</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_shimi_yobo_r')" data-price="13600">シミ予防ケア</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_shiwa_lift_r')" data-price="14200">シワ、リフトケア</button>
         `;
                 // 2回目以降もオプション非表示
                 optionPriceText = '';
