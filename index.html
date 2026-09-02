@@ -1051,11 +1051,11 @@
             // 新規メニュー
             '毛穴の目立ちにくい肌へ': 120,
             'シミ予防ケア': 120,
-            'シワ、リフトケア': 120,
+            '肌質改善プログラム（全３回）': 120,
             // 2回目以降メニュー
-            '痛くない！シミ・肝斑除去＆美白': 120,
-            'ほうれい線・おでこのシワ改善': 120,
-            '肌理が整う肌質改善3回コース': 120
+            'スタンダード': 120,
+            'スペシャル': 120,
+            'お任せコース（全３回）': 120
         };
 
         let selectedMenuTime = 0;
@@ -1352,34 +1352,22 @@
                 // 新規②：シミ予防ケア（所要時間120分）
                 selectedMenuTime = 120;
                 treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">13,600円（税込）</span></strong></div>`;
-            } else if (treatmentId === 'treatment_shiwa_lift') {
-                // 新規③：シワ、リフトケア（所要時間120分）
+            } else if (treatmentId === 'treatment_hadashitsu_new') {
+                // 新規③：肌質改善プログラム（全３回）（所要時間120分）
                 selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">14,200円（税込）</span></strong></div>`;
-            } else if (treatmentId === 'treatment_kanpan_r') {
-                // 2回目以降①：痛くない！シミ・肝斑除去＆美白（所要時間120分）
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">43,200円（税込）</span></strong></div>`;
+            } else if (treatmentId === 'treatment_standard_r') {
+                // 2回目以降①：スタンダード（所要時間120分）
                 selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">1回 14,800円／3回 44,400円（税込）</span></strong></div>`;
-            } else if (treatmentId === 'treatment_houreisen_r') {
-                // 2回目以降②：ほうれい線・おでこのシワ改善（所要時間120分）
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">10,000円（税込）</span></strong></div>`;
+            } else if (treatmentId === 'treatment_special_r') {
+                // 2回目以降②：スペシャル（所要時間120分）
                 selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">1回 15,400円／3回 46,200円（税込）</span></strong></div>`;
-            } else if (treatmentId === 'treatment_kime_r') {
-                // 2回目以降③：肌理が整う肌質改善3回コース（所要時間120分）
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">13,300円（税込）</span></strong></div>`;
+            } else if (treatmentId === 'treatment_omakase_r') {
+                // 2回目以降③：お任せコース（全３回）（所要時間120分）
                 selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">3回 43,200円（税込）</span></strong></div>`;
-            } else if (treatmentId === 'treatment_keana_new_r') {
-                // 2回目以降④：毛穴の目立ちにくい肌へ（所要時間120分）
-                selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">10,800円（税込）</span></strong></div>`;
-            } else if (treatmentId === 'treatment_shimi_yobo_r') {
-                // 2回目以降⑤：シミ予防ケア（所要時間120分）
-                selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">13,600円（税込）</span></strong></div>`;
-            } else if (treatmentId === 'treatment_shiwa_lift_r') {
-                // 2回目以降⑥：シワ、リフトケア（所要時間120分）
-                selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">14,200円（税込）</span></strong></div>`;
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">50,000円（税込）</span></strong></div>`;
             } else {
                 treatmentText.innerHTML = '';
                 treatmentText.style.display = 'none';
@@ -1502,7 +1490,7 @@
                 menuHtml = `
             <button type="button" onclick="selectSymptom(this, 'treatment_keana_new')" data-price="10800">毛穴の目立ちにくい肌へ</button>
             <button type="button" onclick="selectSymptom(this, 'treatment_shimi_yobo')" data-price="13600">シミ予防ケア</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment_shiwa_lift')" data-price="14200">シワ、リフトケア</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_hadashitsu_new')" data-price="43200">肌質改善プログラム（全３回）</button>
         `;
                 // 初回はオプション非表示
                 optionPriceText = '';
@@ -1515,12 +1503,9 @@
             } else {
                 // 2回目以降のメニュー
                 menuHtml = `
-            <button type="button" onclick="selectSymptom(this, 'treatment_kanpan_r')" data-price="14800">痛くない！シミ・肝斑除去＆美白</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment_houreisen_r')" data-price="15400">ほうれい線・おでこのシワ改善</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment_kime_r')" data-price="43200">肌理が整う肌質改善3回コース</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment_keana_new_r')" data-price="10800">毛穴の目立ちにくい肌へ</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment_shimi_yobo_r')" data-price="13600">シミ予防ケア</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment_shiwa_lift_r')" data-price="14200">シワ、リフトケア</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_standard_r')" data-price="10000">スタンダード</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_special_r')" data-price="13300">スペシャル</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_omakase_r')" data-price="50000">お任せコース（全３回）</button>
         `;
                 // 2回目以降もオプション非表示
                 optionPriceText = '';
@@ -1779,7 +1764,7 @@
             const table = calendar.querySelector('table tbody');
 
             const times = [
-                '10:00', '13:00', '15:00', '17:00'
+                '10:00', '12:00', '14:00', '16:00'
             ];
 
             if (table.rows.length === 0) {
