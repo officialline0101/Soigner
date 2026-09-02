@@ -1051,7 +1051,7 @@
             // 新規メニュー
             '毛穴の目立ちにくい肌へ': 120,
             'シミ予防ケア': 120,
-            '肌質改善プログラム（全３回）': 120,
+            'シワ、リフトケア': 120,
             // 2回目以降メニュー
             'スタンダード': 120,
             'スペシャル': 120,
@@ -1352,10 +1352,10 @@
                 // 新規②：シミ予防ケア（所要時間120分）
                 selectedMenuTime = 120;
                 treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">13,600円（税込）</span></strong></div>`;
-            } else if (treatmentId === 'treatment_hadashitsu_new') {
-                // 新規③：肌質改善プログラム（全３回）（所要時間120分）
+            } else if (treatmentId === 'treatment_shiwa_lift') {
+                // 新規③：シワ、リフトケア（所要時間120分）
                 selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">43,200円（税込）</span></strong></div>`;
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">14,200円（税込）</span></strong></div>`;
             } else if (treatmentId === 'treatment_standard_r') {
                 // 2回目以降①：スタンダード（所要時間120分）
                 selectedMenuTime = 120;
@@ -1490,7 +1490,7 @@
                 menuHtml = `
             <button type="button" onclick="selectSymptom(this, 'treatment_keana_new')" data-price="10800">毛穴の目立ちにくい肌へ</button>
             <button type="button" onclick="selectSymptom(this, 'treatment_shimi_yobo')" data-price="13600">シミ予防ケア</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment_hadashitsu_new')" data-price="43200">肌質改善プログラム（全３回）</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_shiwa_lift')" data-price="14200">シワ、リフトケア</button>
         `;
                 // 初回はオプション非表示
                 optionPriceText = '';
