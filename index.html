@@ -1049,13 +1049,14 @@
 
         let menuTimes = {
             // 新規メニュー
-            '毛穴の目立ちにくい肌へ': 120,
-            'シミ予防ケア': 120,
-            'シワ、リフトケア': 120,
+            'いつも 人気No.1！ 毛穴洗浄フェイシャル': 120,
+            '潤い実感 人気No.1！ 生コラーゲン2倍フェイシャル': 120,
+            'エイジング 人気No.1！ ヒト幹細胞とPDRNシワ撃退フェイシャル': 120,
             // 2回目以降メニュー
             'スタンダード': 120,
             'スペシャル': 120,
-            'お任せコース（全３回）': 120
+            'お任せコース（全３回）': 120,
+            '肌質改善３回コース': 120
         };
 
         let selectedMenuTime = 0;
@@ -1344,18 +1345,18 @@
 
             // --- IDごとの表示内容（説明・料金・時間）を設定 ---
             // ※料金はボタンのdata-priceではなく、ここの定義が優先されます
-            if (treatmentId === 'treatment_keana_new') {
-                // 新規①：毛穴の目立ちにくい肌へ（所要時間120分）
+            if (treatmentId === 'treatment_keana_senjo_new') {
+                // 新規①：いつも 人気No.1！ 毛穴洗浄フェイシャル（所要時間120分）
                 selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">10,800円（税込）</span></strong></div>`;
-            } else if (treatmentId === 'treatment_shimi_yobo') {
-                // 新規②：シミ予防ケア（所要時間120分）
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">11,000円（税込）</span></strong></div>`;
+            } else if (treatmentId === 'treatment_collagen_new') {
+                // 新規②：潤い実感 人気No.1！ 生コラーゲン2倍フェイシャル（所要時間120分）
                 selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">13,600円（税込）</span></strong></div>`;
-            } else if (treatmentId === 'treatment_shiwa_lift') {
-                // 新規③：シワ、リフトケア（所要時間120分）
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">13,500円（税込）</span></strong></div>`;
+            } else if (treatmentId === 'treatment_pdrn_new') {
+                // 新規③：エイジング 人気No.1！ ヒト幹細胞とPDRNシワ撃退フェイシャル（所要時間120分）
                 selectedMenuTime = 120;
-                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">14,200円（税込）</span></strong></div>`;
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">14,800円（税込）</span></strong></div>`;
             } else if (treatmentId === 'treatment_standard_r') {
                 // 2回目以降①：スタンダード（所要時間120分）
                 selectedMenuTime = 120;
@@ -1368,6 +1369,10 @@
                 // 2回目以降③：お任せコース（全３回）（所要時間120分）
                 selectedMenuTime = 120;
                 treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">50,000円（税込）</span></strong></div>`;
+            } else if (treatmentId === 'treatment_hadashitsu_r') {
+                // 2回目以降④：肌質改善３回コース（所要時間120分）
+                selectedMenuTime = 120;
+                treatmentText.innerHTML = `<div style="text-align: right;"><strong>料金：<span style="color: red;">43,200円（税込）</span></strong></div>`;
             } else {
                 treatmentText.innerHTML = '';
                 treatmentText.style.display = 'none';
@@ -1488,9 +1493,9 @@
             if (element.id === 'firstVisit') {
                 // 初回のメニュー
                 menuHtml = `
-            <button type="button" onclick="selectSymptom(this, 'treatment_keana_new')" data-price="10800">毛穴の目立ちにくい肌へ</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment_shimi_yobo')" data-price="13600">シミ予防ケア</button>
-            <button type="button" onclick="selectSymptom(this, 'treatment_shiwa_lift')" data-price="14200">シワ、リフトケア</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_keana_senjo_new')" data-price="11000">いつも 人気No.1！ 毛穴洗浄フェイシャル</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_collagen_new')" data-price="13500">潤い実感 人気No.1！ 生コラーゲン2倍フェイシャル</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_pdrn_new')" data-price="14800">エイジング 人気No.1！ ヒト幹細胞とPDRNシワ撃退フェイシャル</button>
         `;
                 // 初回はオプション非表示
                 optionPriceText = '';
@@ -1506,6 +1511,7 @@
             <button type="button" onclick="selectSymptom(this, 'treatment_standard_r')" data-price="10000">スタンダード</button>
             <button type="button" onclick="selectSymptom(this, 'treatment_special_r')" data-price="13300">スペシャル</button>
             <button type="button" onclick="selectSymptom(this, 'treatment_omakase_r')" data-price="50000">お任せコース（全３回）</button>
+            <button type="button" onclick="selectSymptom(this, 'treatment_hadashitsu_r')" data-price="43200">肌質改善３回コース</button>
         `;
                 // 2回目以降もオプション非表示
                 optionPriceText = '';
